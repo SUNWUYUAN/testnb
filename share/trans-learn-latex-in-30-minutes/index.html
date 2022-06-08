@@ -1,0 +1,549 @@
+<!DOCTYPE html><html lang="zh-CN"><head><!-- hexo injector head_begin start --><link href="/css/hexo-tag-common.css" rel="stylesheet"/><!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="云游君"><meta name="copyright" content="云游君"><meta name="generator" content="Hexo 6.2.0"><meta name="theme" content="hexo-theme-yun"><title>【译】30 分钟学会 LaTeX | 云游君的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.3.3/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"www.yunyoujun.cn","root":"/","title":"云游君的小站","version":"1.10.4","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"algolia":{"appID":"CJXXAGRCYN","apiKey":"ae1966d2aeab22bf9335679f45d2cd9a","indexName":"my-hexo-blog","hits":{"per_page":8}},"fireworks":{"colors":null},"waline":{"config":{"enable":true,"serverURL":"https://waline.yunyoujun.cn","comment":true,"visitor":true,"emoji":["https://fastly.jsdelivr.net/gh/walinejs/emojis@latest/bilibili/","https://fastly.jsdelivr.net/gh/walinejs/emojis@latest/weibo/","https://fastly.jsdelivr.net/gh/walinejs/emojis@latest/qq/"],"locale":{"placeholder":"填写邮箱，可以收到回复通知哦～"},"requiredMeta":["nick"],"el":"#waline","lang":"zh-CN"},"cdn":"https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.js","dark":"html.dark"},"vendors":{"darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="云游君的小站" type="application/atom+xml"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LL0D86CY9"></script><script>if (CONFIG.hostname === location.hostname) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1LL0D86CY9');
+}</script><script data-ad-client="ca-pub-2245427233262012" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M9KWR9L');</script><!-- End Google Tag Manager --><meta name="description" content="译自 Overleaf - Learn LaTeX in 30 minutes云游君 (YunYouJun) &amp;#x6d;&amp;#x65;&amp;#64;&amp;#x79;&amp;#117;&amp;#x6e;&amp;#x79;&amp;#x6f;&amp;#x75;&amp;#106;&amp;#117;&amp;#110;&amp;#46;&amp;#x63;&amp;#110;  在本指南中，我们希望为您初步介绍一下 LaTeX 。该指南不需要您具有任何 LaTeX 的先验知识，不过到您">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】30 分钟学会 LaTeX">
+<meta property="og:url" content="https://www.yunyoujun.cn/share/trans-learn-latex-in-30-minutes/index.html">
+<meta property="og:site_name" content="云游君的小站">
+<meta property="og:description" content="译自 Overleaf - Learn LaTeX in 30 minutes云游君 (YunYouJun) &amp;#x6d;&amp;#x65;&amp;#64;&amp;#x79;&amp;#117;&amp;#x6e;&amp;#x79;&amp;#x6f;&amp;#x75;&amp;#106;&amp;#117;&amp;#110;&amp;#46;&amp;#x63;&amp;#110;  在本指南中，我们希望为您初步介绍一下 LaTeX 。该指南不需要您具有任何 LaTeX 的先验知识，不过到您">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/0/01/Firstdocsmall.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/e/e9/Learnlatex1.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/e/e9/Learnlatex1.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/a/a9/Biu1.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/5/5d/Biu5.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/9/9d/InsertingImagesEx1.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/25/InsertingImages.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/e/ea/Itemize.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/3/3a/Enumerate.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/d/db/Einstein1.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/3/3a/Einstein2.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/22/Math.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/d/db/Abstractsmall.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/d/d3/Abstractnonewline.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/7/7c/Sections1.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/c/c2/TablesEx1.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/25/TablesEx2.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/2c/TablesEx3.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/26/Ourtablelabel.PNG">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/6/6d/TableOfContentsEx1.png">
+<meta property="og:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/6/6c/Downloadpdf.PNG">
+<meta property="article:published_time" content="2019-10-28T08:02:36.000Z">
+<meta property="article:modified_time" content="2019-11-05T08:09:36.000Z">
+<meta property="article:author" content="云游君">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="分享">
+<meta property="article:tag" content="LaTeX">
+<meta property="article:tag" content="译文">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/0/01/Firstdocsmall.PNG"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="云游君"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="云游君"><span class="site-author-status" title="Looking for dawn.">🌑</span></a><div class="site-author-name"><a href="/about/">云游君</a></div><a class="site-name" href="/about/site.html">云游君的小站</a><sub class="site-subtitle">All at sea.</sub><div class="site-description">希望能成为一个有趣的人</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">83</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">16</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">89</span></a></div><a class="site-state-item hty-icon-button" href="/about/#comment" title="留言板"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:clipboard-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><span class="icon iconify" data-icon="ri:rss-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qun.qq.com/qqweb/qunpro/share?_wv=3&amp;_wwv=128&amp;appChannel=share&amp;inviteCode=28OEdR&amp;appChannel=share&amp;businessType=9&amp;from=246610&amp;biz=ka" title="QQ 频道 - 小云之家" target="_blank" style="color:#12B7F5"><span class="icon iconify" data-icon="ri:qq-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/YunYouJun" title="GitHub" target="_blank" style="color:#6e5494"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><span class="icon iconify" data-icon="ri:weibo-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><span class="icon iconify" data-icon="ri:douban-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><span class="icon iconify" data-icon="ri:netease-cloud-music-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/1579790" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://cdn.yunyoujun.cn/img/about/white-qrcode-and-search.jpg" title="微信公众号" target="_blank" style="color:#1AAD19"><span class="icon iconify" data-icon="ri:wechat-2-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><span class="icon iconify" data-icon="ri:twitter-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><span class="icon iconify" data-icon="ri:telegram-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://discord.gg/nd3mPkU5j8" title="Discord" target="_blank" style="color:#5A6DE2"><span class="icon iconify" data-icon="ri:discord-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:me@yunyoujun.cn" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.link" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><span class="icon iconify" data-icon="ri:train-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a><a class="links-item hty-icon-button" href="/girls/" title="喜欢的女孩子" style="color:hotpink"><span class="icon iconify" data-icon="ri:women-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-LaTeX-%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是 LaTeX ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%A6%E4%B9%A0-LaTeX-%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">为什么学习 LaTeX ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E5%86%99%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87-LaTeX-%E5%90%A7"><span class="toc-number">3.</span> <span class="toc-text">来写你的第一篇 LaTeX 吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%AF%87%E6%96%87%E6%A1%A3%E7%9A%84%E5%BA%8F%E6%96%87"><span class="toc-number">4.</span> <span class="toc-text">一篇文档的序文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%A0%87%E9%A2%98%E3%80%81%E4%BD%9C%E8%80%85%E5%92%8C%E6%97%A5%E6%9C%9F"><span class="toc-number">5.</span> <span class="toc-text">添加标题、作者和日期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="toc-number">6.</span> <span class="toc-text">添加注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%97%E4%BD%93%EF%BC%8C%E6%96%9C%E4%BD%93%E5%92%8C%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="toc-number">7.</span> <span class="toc-text">粗体，斜体和下划线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%9B%BE%E5%83%8F"><span class="toc-number">8.</span> <span class="toc-text">添加图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E9%A2%98%EF%BC%8C%E6%A0%87%E7%AD%BE%E5%92%8C%E5%8F%82%E8%80%83"><span class="toc-number">9.</span> <span class="toc-text">标题，标签和参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-LaTeX-%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%88%97%E8%A1%A8"><span class="toc-number">10.</span> <span class="toc-text">在 LaTeX 中创建列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">10.1.</span> <span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">10.2.</span> <span class="toc-text">有序列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA-LaTeX-%E6%B7%BB%E5%8A%A0%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7"><span class="toc-number">11.</span> <span class="toc-text">为 LaTeX 添加数学符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="toc-number">12.</span> <span class="toc-text">基本格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">12.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD%E5%92%8C%E6%8D%A2%E8%A1%8C%E7%AC%A6"><span class="toc-number">12.2.</span> <span class="toc-text">段落和换行符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%A0%E8%8A%82"><span class="toc-number">12.3.</span> <span class="toc-text">章节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8%E6%A0%BC"><span class="toc-number">13.</span> <span class="toc-text">创建表格</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-LaTeX-%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%A1%A8"><span class="toc-number">13.1.</span> <span class="toc-text">在 LaTeX 中创建一个简单的表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BE%B9%E6%A1%86"><span class="toc-number">13.2.</span> <span class="toc-text">添加边框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E8%AF%B4%E6%98%8E%EF%BC%88%E6%A0%87%E9%A2%98%EF%BC%89%EF%BC%8C%E6%A0%87%E7%AD%BE%E5%92%8C%E5%8F%82%E8%80%83"><span class="toc-number">13.3.</span> <span class="toc-text">表格说明（标题），标签和参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95"><span class="toc-number">13.4.</span> <span class="toc-text">添加目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BD%A0%E5%AE%8C%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">14.</span> <span class="toc-text">下载你完成的文件</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://www.yunyoujun.cn/share/trans-learn-latex-in-30-minutes/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="云游君"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="云游君的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【译】30 分钟学会 LaTeX<a class="post-edit-link" href="https://github.com/YunYouJun/yunyoujun.github.io/tree/hexo/source/_posts/share/trans-learn-latex-in-30-minutes.md" target="_blank" title="编辑" rel="noopener"><span class="icon iconify" data-icon="ri:edit-line"></span></a></h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2019-10-28 16:02:36" itemprop="dateCreated datePublished" datetime="2019-10-28T16:02:36+08:00">2019-10-28</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="修改时间：2019-11-05 16:09:36" itemprop="dateModified" datetime="2019-11-05T16:09:36+08:00">2019-11-05</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><span class="icon iconify" data-icon="ri:file-word-line"></span></span> <span title="本文字数">5.8k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><span class="icon iconify" data-icon="ri:timer-line"></span></span> <span title="阅读时长">24m</span></span></span><span class="leancloud_visitors" id="/share/trans-learn-latex-in-30-minutes/" data-flag-title="【译】30 分钟学会 LaTeX"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读次数"><span class="icon iconify" data-icon="ri:eye-line"></span> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="评论数"><span class="icon iconify" data-icon="ri:chat-3-line"></span> <span class="waline-comment-count" id="/share/trans-learn-latex-in-30-minutes/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E4%BA%91%E6%B8%B8%E7%9A%84%E5%B0%8F%E5%AE%89%E5%88%A9/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">云游的小安利</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E6%95%99%E7%A8%8B/" style="--text-color:royalblue"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">教程</span></a><a class="tag-item" href="/tags/%E5%88%86%E4%BA%AB/" style="--text-color:#0078e7"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">分享</span></a><a class="tag-item" href="/tags/LaTeX/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">LaTeX</span></a><a class="tag-item" href="/tags/%E8%AF%91%E6%96%87/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">译文</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><blockquote>
+<p>译自 <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Overleaf - Learn LaTeX in 30 minutes</a><br>云游君 (YunYouJun) <a href="mailto:&#x6d;&#x65;&#64;&#x79;&#117;&#x6e;&#x79;&#x6f;&#x75;&#106;&#117;&#110;&#46;&#x63;&#110;">&#x6d;&#x65;&#64;&#x79;&#117;&#x6e;&#x79;&#x6f;&#x75;&#106;&#117;&#110;&#46;&#x63;&#110;</a></p>
+</blockquote>
+<p>在本指南中，我们希望为您初步介绍一下 LaTeX 。<br>该指南不需要您具有任何 LaTeX 的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%88%E9%AA%8C%E7%9F%A5%E8%AF%86">先验知识</a>，<br>不过到您完成时，您将会已经编写出您的第一个 LaTeX 文档，并且如果顺利的话，您将能够对 LaTeX 提供的一些基本功能有很好地了解。</p>
+<span id="more"></span>
+
+<h2 id="什么是-LaTeX-？"><a href="#什么是-LaTeX-？" class="headerlink" title="什么是 LaTeX ？"></a>什么是 LaTeX ？</h2><p>LaTeX （发音为 LAY-tek or LAH-tek） 是个用于创建专业外观文档的工具。<br>它基于“所见即所得”的思想，这意味着您仅需要关注您文档的内容，接下来计算机会帮你搞定格式。<br>用户们可以输入纯文本并让 LaTeX 来处理剩余部分，而不是像 Microsoft Word 或 LibreOffice Writer 那样在页面上分割文本去控制格式。</p>
+<blockquote>
+<p>译者注：英式英语：&#x2F;‘leɪteks&#x2F; ｜ 美式英语：&#x2F;‘letɛks&#x2F;</p>
+</blockquote>
+<h2 id="为什么学习-LaTeX-？"><a href="#为什么学习-LaTeX-？" class="headerlink" title="为什么学习 LaTeX ？"></a>为什么学习 LaTeX ？</h2><p>LaTeX 在世界范围内用于科学文档，书籍以及许多其他形式的出版。<br>它不仅可以创建精美的排版文档，而且还允许用户非常快速地处理排版更为复杂的部分，例如输入数学公式、创建目录、引用和创建书目以及在所有章节中保持一致的布局。<br>由于可用的开源软件包数量众多（稍后会详细介绍），所以 LaTeX 的可能性是无穷的。<br>这些软件包允许用户使用 LaTeX 做更多的事情，比如添加脚注、绘制图表格、创建表格等。</p>
+<p>人们使用 LaTeX 最重要的原因之一是它分离了文档的内容和样式。<br>这意味着您一旦写好了文档的内容，我们就可以轻松改变它的外观。<br>同样，您可以创建一种文档的样式，用来标准化许多不同文档的外观。<br>这使得科学期刊可以为投稿创建模版。这些模版拥有一个预制布局，而仅需要添加内容。<br>实际上，从简历到幻灯片的所有内容有上百种可用的模版。</p>
+<h2 id="来写你的第一篇-LaTeX-吧"><a href="#来写你的第一篇-LaTeX-吧" class="headerlink" title="来写你的第一篇 LaTeX 吧"></a>来写你的第一篇 LaTeX 吧</h2><p>第一步是创建一个新的 LaTeX 项目。<br>您可以通过创建新的 <code>.tex</code> 文件来在自己的计算机上做这件事，或者您也可以在 Overleaf 中开始一个新项目。<br>让我们从最简单的工作示例开始吧：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+First document. This is a simple example, with no
+extra parameters or packages included.
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/0/01/Firstdocsmall.PNG" alt="Firstdocsmall.PNG" loading="lazy"></p>
+<p>你可以看到 LaTeX 已经通过缩进段落的第一行，为你处理了第一段格式。<br>让我们来仔细看一下我们代码的每个部分的功能。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/582dbc33f220531c2d4bda27/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%201&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>代码的第一行声明来文档的类型，叫做类。这个类控制文档的整体外观。<br>不同类型的文档将会需要不同的类，即简历相比一篇科学论文将需要一个不同的类。<br>在这种情况下，这个类是 <code>article</code>，一种最简单最常见的 LaTeX 类。<br>您如果正在处理其他类型的文档，那可能需要不同的类，例如 <code>book</code> 或者 <code>report</code>。</p>
+<p>在此之后，您编写封装在 <code>\begin&#123;document&#125;</code> 和 <code>\end&#123;document&#125;</code> 标签里的文档内容。<br>这就是文档的主体。你可以在这里开始编写，并根据你的需要来修改文本。<br>你必须编译文档，才能在 <code>PDF</code> 中查看这些更改的结果。<br>你只需点击 <code>Recompile</code> 便可在 Overleaf 中执行此操作。<br>（你也可以通过点击 <code>Recompile</code> 按钮旁的小尖头，并设置 <code>Auto Compile</code> 为开，来将项目设置为在编辑文件时自动重新编译。）</p>
+<p>如果你使用的是基础文本编辑器，例如 <code>gedit</code>、<code>emacs</code>、<code>vim</code>、<code>sublime</code>、<code>notepad</code>等，你将不得不手动编译文档。<br>为此，只需在你的计算机终端&#x2F;命令行中运行 <code>pdflatex &lt;你的文档&gt;</code>。<br>有关如何执行此操作的更多信息，请参见<a target="_blank" rel="noopener" href="https://en.wikibooks.org/wiki/LaTeX/Basics#Compilation">此处</a>。</p>
+<p>如果你正在使用<a target="_blank" rel="noopener" href="https://en.wikibooks.org/wiki/LaTeX/Installation#Editors">专用的 LaTeX 编辑器</a>比如 <code>TeXmaker</code> 或者 <code>TeXworks</code>，只需点击 <code>Recompile</code> 按钮。<br>如果你不确定位置在哪里，请查阅程序文档。</p>
+<p>现在您已经了解了如何向文档中添加内容，那么下一步就是给它起个标题。 为此，我们必须简短地谈一下 <code>preamble</code> （preamble 有引言、序文之意，但是这里主要指 LaTeX 中的代码部分，所以保留原词）。</p>
+<h2 id="一篇文档的序文"><a href="#一篇文档的序文" class="headerlink" title="一篇文档的序文"></a>一篇文档的序文</h2><p>在上一个示例中，文本是被输入在 <code>\begin &#123;document&#125;</code> 命令之后的。<br>在此之前，<code>.tex</code> 文件中的的所有内容都被称为 <code>preamble</code>。<br>在 <code>preamble</code> 中，你定义要编写的文档的类型，编写所用的语言，想要使用的包（稍后会详细介绍）和其他几个元素。<br>例如，普通文档的 <code>preamble</code> 将如下所示：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">[</span>12pt, letterpaper<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">[</span>utf8<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">inputenc</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p>下面是每行的详细说明：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">[</span>12pt, letterpaper<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p>如前所述，这定义了文档的类型。一些包含在方括号里的附加参数可以被传递给命令。<br>这些参数必须用逗号分隔。在示例中，额外的参数设置字体大小（12pt）和纸张尺寸（letterpaper）。<br>当然，可以使用其他字体大小（9pt，11pt，12pt），但是如果没有指定，则默认大小为 <code>10pt</code>。<br>至于纸张尺寸，其他可能的值是 <code>a4paper</code> 和 &#96;legalpaper&#96;&#96;；<br>请参阅有关页面大小和边距的文章，以获取有关此内容的更多详细信息。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\usepackage</span><span class="token punctuation">[</span>utf8<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">inputenc</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p>这是文档的编码。它可以被省略或更改为其他编码，但建议使用 <code>utf-8</code>。<br>除非您特别需要其他编码，否则如果你还不确定的话，请将此行添加到 <code>preamble</code> 中。</p>
+<h2 id="添加标题、作者和日期"><a href="#添加标题、作者和日期" class="headerlink" title="添加标题、作者和日期"></a>添加标题、作者和日期</h2><p>要将标题，作者和日期添加到文档中，您必须在 <code>preamble</code>（不是文档的主体）中添加三行。<br>这些行是</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\title</span><span class="token punctuation">&#123;</span>First document<span class="token punctuation">&#125;</span></code></pre>
+
+<p>这是文档的标题。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\author</span><span class="token punctuation">&#123;</span>Hubert Farnsworth<span class="token punctuation">&#125;</span></code></pre>
+
+<p>在此处输入作者的姓名，并且作为一个可选项，你可以添加接下来的命令：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\thanks</span><span class="token punctuation">&#123;</span>funded by the Overleaf team<span class="token punctuation">&#125;</span></code></pre>
+
+<p>这可以被添加在标题命令的大括号里作者的姓名之后。它将会添加上标和有着括号内文本的脚注。<br>如果您需要在文章中感谢一个机构，该功能将非常有用。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\date</span><span class="token punctuation">&#123;</span>February 2014<span class="token punctuation">&#125;</span></code></pre>
+
+<p>您可以手动输入日期或使用命令 <code>\today</code>，以便在编译文档时自动更新日期。</p>
+<p>添加这些行后，您的 <code>preamble</code> 应该看起来像这样</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">[</span>12pt, letterpaper, twoside<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">[</span>utf8<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">inputenc</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\title</span><span class="token punctuation">&#123;</span>First document<span class="token punctuation">&#125;</span>
+<span class="token function selector">\author</span><span class="token punctuation">&#123;</span>Hubert Farnsworth <span class="token function selector">\thanks</span><span class="token punctuation">&#123;</span>funded by the Overleaf team<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\date</span><span class="token punctuation">&#123;</span>February 2017<span class="token punctuation">&#125;</span></code></pre>
+
+<p>现在，您已经为文档指定了标题，作者和日期，您可以使用 <code>\maketitle</code> 命令在文档上打印此信息。这应被包含在文档的 <code>body</code>（主体，原文加粗，作为 LaTeX 术语） 中您像要打印标题的位置。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\maketitle</span>
+
+We have now added a title, author and date to our first <span class="token function selector">\LaTeX</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> document!
+
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/e/e9/Learnlatex1.PNG" alt="Learnlatex1.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/582dbeacf220531c2d4bdaaa/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%202&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h2 id="添加注释"><a href="#添加注释" class="headerlink" title="添加注释"></a>添加注释</h2><p>与任何你正在编写的任何代码一样，包含注释通常会很有用。注释是您可以包含在文档中的几段文字，这些文字不会被打印，也不会以任何方式影响文档。在调试时，它们对于组织工作，做笔记或注释行&#x2F;节很有用。要在 LaTeX 中进行注释，只需在行首写一个 ％ 符号，如下所示：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\maketitle</span>
+
+We have now added a title, author and date to our first <span class="token function selector">\LaTeX</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> document!
+
+<span class="token comment">% This line here is a comment. It will not be printed in the document.</span>
+
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/e/e9/Learnlatex1.PNG" alt="Learnlatex1.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a308db13712fef4e9deff7/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%203&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h2 id="粗体，斜体和下划线"><a href="#粗体，斜体和下划线" class="headerlink" title="粗体，斜体和下划线"></a>粗体，斜体和下划线</h2><p>现在，我们来看一些简单的文本格式命令。</p>
+<ul>
+<li><strong>粗体</strong>：LaTeX 中的粗体文本使用 <code>\textbf&#123;...&#125;</code> 命令编写。</li>
+<li>_斜体_：LaTeX 中的斜体文本使用 <code>\textit&#123;...&#125;</code> 命令编写。</li>
+<li><u>下划线</u>：LaTeX 中带下划线的文本使用 <code>\underline&#123;...&#125;</code> 命令编写。</li>
+</ul>
+<p>下面展示了其中每个实例的示例：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex">Some of the <span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>greatest<span class="token punctuation">&#125;</span>
+discoveries in <span class="token function selector">\underline</span><span class="token punctuation">&#123;</span>science<span class="token punctuation">&#125;</span>
+were made by <span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span><span class="token function selector">\textit</span><span class="token punctuation">&#123;</span>accident<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>.</code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/a/a9/Biu1.png" alt="Biu1.png" loading="lazy"></p>
+<p>另一个非常有用的命令是 <code>\emph&#123;...&#125;</code> 命令。实际上，<code>\emph</code> 命令使用其参数的操作取决于上下文 - 在普通文本中，强调的文本是斜体，但是如果在斜体文本中使用，则此行为是相反的 - 请参见以下示例：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex">Some of the greatest <span class="token function selector">\emph</span><span class="token punctuation">&#123;</span>discoveries<span class="token punctuation">&#125;</span>
+in science
+were made by accident.
+
+<span class="token function selector">\textit</span><span class="token punctuation">&#123;</span>Some of the greatest <span class="token function selector">\emph</span><span class="token punctuation">&#123;</span>discoveries<span class="token punctuation">&#125;</span>
+in science
+were made by accident.<span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>Some of the greatest <span class="token function selector">\emph</span><span class="token punctuation">&#123;</span>discoveries<span class="token punctuation">&#125;</span>
+in science
+were made by accident.<span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/5/5d/Biu5.png" alt="Biu5.png" loading="lazy"></p>
+<p>此外，某些软件包，例如 <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Beamer"><code>Beamer</code></a>，更改了 <code>\emph</code> 命令的行为方式。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30a6813712fef4e9df06b/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%204&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h2 id="添加图像"><a href="#添加图像" class="headerlink" title="添加图像"></a>添加图像</h2><p>现在，我们将研究如何将图像添加到 LaTeX 文档中。在 Overleaf 上，您首先必须<a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Including_images_in_ShareLaTeX">上传图像</a>。</p>
+<p>以下是一个如何包含图片的示例。</p>
+<blockquote>
+<p>译者注：前文使用的是 image ，这里使用的是 picture ，所以分别译为图像、图片。</p>
+</blockquote>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">&#123;</span><span class="token keyword">graphicx</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\graphicspath</span><span class="token punctuation">&#123;</span> <span class="token punctuation">&#123;</span>images/<span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+The universe is immense and it seems to be homogeneous,
+in a large scale, everywhere we look at.
+
+<span class="token function selector">\includegraphics</span><span class="token punctuation">&#123;</span>universe<span class="token punctuation">&#125;</span>
+
+There's a picture of a galaxy above
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/9/9d/InsertingImagesEx1.png" alt="InsertingImagesEx1.png" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30b7413712fef4e9df0a8/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%205&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>LaTeX 不能单独管理图像，因此您需要使用一个包。包可用于更改 LaTeX 文档的默认外观，或允许更多功能。<br>这种情况下，您需要在我们的文档中包含一个图像，因此您应该使用 <code>graphicx</code> 包。<br>该软件包提供了新命令 <code>\includegraphics&#123;...&#125;</code> 和 <code>\graphicspath&#123;...&#125;</code>。<br>要使用 <code>graphicx</code> 包，请在你的 <code>preamble</code> 中包含以下行：<code>\usepackage&#123;graphicx&#125;</code>。</p>
+<p>命令 &#96;\graphicspath{ {images&#x2F;} }告诉 LaTeX，图像被保存在当前目录下名为 <em>images</em> 的文件夹中。</p>
+<p><code>\includegraphics&#123;universe&#125;</code> 是将图像实际包含在文档中的命令。<br>这里的 _universe_（宇宙）是包含图像的文件不带扩展名时的名称，所以 <em>universe.PNG</em> 就变成了 _universe_。<br>图像的文件名不应包含空格或多个点。</p>
+<blockquote>
+<p>注意：文件扩展名是被允许包括进来的，但是最好忽略它。如果省略文件扩展名，它将提示 LaTeX 搜索所有支持的格式。在上传图像文件时，通常也建议使用小写字母作为文件扩展名。有关更多详细信息，请参见<a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Generating_high-res_and_low-res_images">生成高分辨率和低分辨率图像</a>的部分。<br>译者注：该段落原文给出的链接无法跳转到相应的信息部分。</p>
+</blockquote>
+<h2 id="标题，标签和参考"><a href="#标题，标签和参考" class="headerlink" title="标题，标签和参考"></a>标题，标签和参考</h2><p>可以通过图形环境对图像添加标题、标签和引用，如下所示：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">figure</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>h<span class="token punctuation">]</span>
+    <span class="token function selector">\centering</span>
+    <span class="token function selector">\includegraphics</span><span class="token punctuation">[</span>width=0.25<span class="token function selector">\textwidth</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>mesh<span class="token punctuation">&#125;</span>
+    <span class="token function selector">\caption</span><span class="token punctuation">&#123;</span>a nice plot<span class="token punctuation">&#125;</span>
+    <span class="token function selector">\label</span><span class="token punctuation">&#123;</span><span class="token keyword">fig:mesh1</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">figure</span><span class="token punctuation">&#125;</span>
+
+As you can see in the figure <span class="token function selector">\ref</span><span class="token punctuation">&#123;</span><span class="token keyword">fig:mesh1</span><span class="token punctuation">&#125;</span>, the
+function grows near 0. Also, in the page <span class="token function selector">\pageref</span><span class="token punctuation">&#123;</span>fig:mesh1<span class="token punctuation">&#125;</span>
+is the same example.</code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/25/InsertingImages.PNG" alt="InsertingImages.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30c5613712fef4e9df0e8/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%206&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>该示例中包含三个重要的命令：</p>
+<ul>
+<li><code>\caption&#123;a nice plot&#125;</code>：您可能会期望此命令为图形设置标题。如果你创建了一个图形列表，那么标题将会被用在这里。您可以将其放在图的上方或下方。</li>
+<li><code>\label&#123;fig:mesh1&#125;</code>：如果您需要在文档中引用图像，请使用此命令设置标签。标签将为图像编号，并与下一个命令结合使用，以供您参考。</li>
+<li><code>\ref&#123;fig:mesh1&#125;</code>：该代码将替换为与参考图相对应的数字。</li>
+</ul>
+<p>将图像放置在 LaTeX 文档中时，我们应始终将它们放置在图形环境或类似环境中，以便 LaTeX 可以用适合您剩余文本的方式放置图像。</p>
+<blockquote>
+<p>注意：如果您在自己的计算机上使用标题和参考，那你将必须编译两次文档才能使参考正常工作。Overleaf 会自动为您完成此操作。</p>
+</blockquote>
+<h2 id="在-LaTeX-中创建列表"><a href="#在-LaTeX-中创建列表" class="headerlink" title="在 LaTeX 中创建列表"></a>在 LaTeX 中创建列表</h2><p>在 LaTeX 中创建列表非常简单。您可以使用不同的列表环境创建列表。<br>环境是我们文档中您希望以与文档其余部分不同方式进行呈现的部分。<br>它们以 <code>\begin&#123;...&#125;</code> 命令开始，以 <code>\end&#123;...&#125;</code> 命令结束。</p>
+<p>列表主要有两种不同的类型，有序列表和无序列表。各自将使用不同的环境。</p>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表是由 <code>itemize</code>（逐项列记之意，原文为专有名词）环境生成的。每个条目之前必须带有控制序列 <code>\item</code>，如下所示。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">itemize</span><span class="token punctuation">&#125;</span>
+  <span class="token function selector">\item</span> The individual entries are indicated with a black dot, a so-called bullet.
+  <span class="token function selector">\item</span> The text in the entries may be of any length.
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">itemize</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/e/ea/Itemize.png" alt="Itemize.png" loading="lazy"></p>
+<p>默认情况下，各个独立的条目都用黑点标示，即所谓的项目符号。条目中的文本可以有任意长度。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/52fe74766a6237452e000088/download/zip&templateName=Lists%20Examples&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>在不同环境中，有序列表具有相同的句法规则。我们使用 <code>enumerate</code>（枚举之意，原文为专有名词）环境制作有序列表：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">enumerate</span><span class="token punctuation">&#125;</span>
+  <span class="token function selector">\item</span> This is the first entry in our list
+  <span class="token function selector">\item</span> The list numbers increase with each entry we add
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">enumerate</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/3/3a/Enumerate.png" alt="Enumerate.png" loading="lazy"></p>
+<p>与无序列表一样，每个条目之前必须带有控制序列 <code>\item</code>，它将自动生成标记该项目的数字。枚举标签由从 1 开始的序列号组成。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/52fe74766a6237452e000088/download/zip&templateName=Lists%20Examples&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h2 id="为-LaTeX-添加数学符号"><a href="#为-LaTeX-添加数学符号" class="headerlink" title="为 LaTeX 添加数学符号"></a>为 LaTeX 添加数学符号</h2><p>LaTeX 的主要优点之一是易于编写数学表达式。<br>LaTeX 允许两种用于数学表达式的书写模式：<code>inline</code>（内联）模式和 <code>display</code>（显示）模式。<br>第一种方式用于编写作为文本一部分的公式。第二种方式用于编写不属于文本或段落的表达式，因此被放在单独的行上。<br>让我们看一个 <code>inline</code> 模式的例子：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex">In physics, the mass-energy equivalence is stated
+by the equation <span class="token equation string">$E=mc^2$</span>, discovered in 1905 by Albert Einstein.</code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/d/db/Einstein1.png" alt="Einstein1.png" loading="lazy"></p>
+<p>要使用 <code>inline</code> 模式来放置方程式，请使用以下定界符之一：<code>\( ... \)</code>，<code>$ ... $</code> 或 <code>\begin&#123;math&#125; ... \end&#123;math&#125;</code>。它们都能够起作用，选择那种取决于个人口味。</p>
+<p><code>displayed</code> 模式有两种版本：已编号和未编号。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex">The mass-energy equivalence is described by the famous equation
+
+<span class="token equation string">\[ E=mc^2 \]</span>
+
+discovered in 1905 by Albert Einstein.
+In natural units (<span class="token equation string">$c = 1$</span>), the formula expresses the identity
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">equation</span><span class="token punctuation">&#125;</span><span class="token equation string">
+E=m
+</span><span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">equation</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/3/3a/Einstein2.png" alt="Einstein2.png" loading="lazy"></p>
+<p>要在 <code>display</code> 模式下打印方程式，请使用以下定界符之一：<code>\[ ... \]</code>，<code>\begin&#123;displaymath&#125; ... \end&#123;displaymath&#125;</code> 或 <code>\begin&#123;equation&#125; ... \end&#123;equation&#125;</code>。<br><a target="_blank" rel="noopener" href="https://texfaq.org/FAQ-dolldoll">不鼓励</a>使用 <code>$$ ... $$</code>，因为它会产生不一致的间距，并且和某些数学程序包一起使用时可能表现得不是很好。</p>
+<blockquote>
+<p>重要说明：equation* 环境是由外部软件包提供的，请参阅 <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Aligning_equations">amsmath</a> 的文章。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/52ec4e44b43917a25a000e96/download/zip&templateName=Math%20Expressions&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>许多数学模式命令都需要 <code>amsmath</code> 程序包，因此在编写数学公式时请确保将其包括在内。<br>下面显示了一些基本数学模式命令的示例。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex">Subscripts in math mode are written as <span class="token equation string">$a_b$</span> and superscripts are written as <span class="token equation string">$a^b$</span>. These can be combined an nested to write expressions such as
+
+<span class="token equation string">\[ T^&#123;i_1 i_2 <span class="token equation-command regex">\dots</span> i_p&#125;_&#123;j_1 j_2 <span class="token equation-command regex">\dots</span> j_q&#125; = T(x^&#123;i_1&#125;,<span class="token equation-command regex">\dots</span>,x^&#123;i_p&#125;,e_&#123;j_1&#125;,<span class="token equation-command regex">\dots</span>,e_&#123;j_q&#125;) \]</span>
+
+We write integrals using <span class="token equation string">$<span class="token equation-command regex">\int</span>$</span> and fractions using <span class="token equation string">$<span class="token equation-command regex">\frac</span>&#123;a&#125;&#123;b&#125;$</span>. Limits are placed on integrals using superscripts and subscripts:
+
+<span class="token equation string">\[ <span class="token equation-command regex">\int</span>_0^1 <span class="token equation-command regex">\frac</span>&#123;1&#125;&#123;e^x&#125; =  <span class="token equation-command regex">\frac</span>&#123;e-1&#125;&#123;e&#125; \]</span>
+
+Lower case Greek letters are written as <span class="token equation string">$<span class="token equation-command regex">\omega</span>$</span> <span class="token equation string">$<span class="token equation-command regex">\delta</span>$</span> etc. while upper case Greek letters are written as <span class="token equation string">$<span class="token equation-command regex">\Omega</span>$</span> <span class="token equation string">$<span class="token equation-command regex">\Delta</span>$</span>.
+
+Mathematical operators are prefixed with a backslash as <span class="token equation string">$<span class="token equation-command regex">\sin</span>(<span class="token equation-command regex">\beta</span>)$</span>, <span class="token equation string">$<span class="token equation-command regex">\cos</span>(<span class="token equation-command regex">\alpha</span>)$</span>, <span class="token equation string">$<span class="token equation-command regex">\log</span>(x)$</span> etc.</code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/22/Math.PNG" alt="Math.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30cfd13712fef4e9df123/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%207&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>在 LaTeX 中数学的可能性是无穷的，不可能在这里将它们都列出来。<br>请务必查看我们这儿的其他文章</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Mathematical_expressions">数学表达式 - Mathematical expressions</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Subscripts_and_superscripts">下标和上标 - Subscripts and superscripts</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Brackets_and_Parentheses">方括号和圆括号 - Brackets and Parentheses</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Fractions_and_Binomials">分数和二项式 - Fractions and Binomials</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Aligning_equations_with_amsmath">对齐等式 - Aligning Equations</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Operators">运算符 - Operators</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Spacing_in_math_mode">数学模式下的间距 - Spacing in math mode</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Integrals,_sums_and_limits">积分，总和与极限 - Integrals, sums and limits</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Display_style_in_math_mode">在数学模式下显示样式 - Display style in math mode</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/List_of_Greek_letters_and_math_symbols">希腊字母和数学符号列表 - List of Greek letters and math symbols</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Mathematical_fonts">数学字体 - Mathematical fonts</a></li>
+</ul>
+<h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><p>现在，我们将研究如何编写摘要，以及如何将 LaTeX 文档格式化为不同的章、节和段落。</p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>在科学文献中，通常的做法是简要概述论文的主题。<br>在 LaTeX 中有一个 <code>abstract</code>（摘要）的环境。<code>abstract</code> 环境会将文本以特殊格式放在你文档的顶部。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">abstract</span><span class="token punctuation">&#125;</span>
+This is a simple paragraph at the beginning of the
+document. A brief introduction about the main subject.
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">abstract</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/d/db/Abstractsmall.PNG" alt="Abstractsmall.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30dd713712fef4e9df14e/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%208&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h3 id="段落和换行符"><a href="#段落和换行符" class="headerlink" title="段落和换行符"></a>段落和换行符</h3><pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">abstract</span><span class="token punctuation">&#125;</span>
+This is a simple paragraph at the beginning of the
+document. A brief introduction about the main subject.
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">abstract</span><span class="token punctuation">&#125;</span>
+
+Now that we have written our abstract, we can begin writing our first paragraph.
+
+This line will start a second Paragraph.
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/d/d3/Abstractnonewline.PNG" alt="Abstractnonewline.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30dd713712fef4e9df14e/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%208&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>在编写文档内容时，如果需要开始新的段落，你必须按两次 “Enter” 键（以插入双空行）。<br>注意，LaTeX 会自动缩进段落。</p>
+<p>想要开始新行而不实际开始新段落，请插入一个<em>换行</em>点，这可以通过 \（在示例中为双反斜杠）或 <code>\newline</code> 命令来实现。</p>
+<p>注意不要使用多个 \ 或 <code>\newlines</code> 来“模拟”段落之间具有较大间距的段落，因为这可能会干扰 LaTeX 的排版算法。<br>推荐的方法是继续使用双空行创建没有任何 \ 的新段落，然后将 <code>\usepackage&#123;parskip&#125;</code> 添加到序言中。</p>
+<p>您可以在 <a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Paragraphs_and_new_lines">段落和换行</a> 文章中找到更多信息。</p>
+<h3 id="章节"><a href="#章节" class="headerlink" title="章节"></a>章节</h3><p>组织文档的命令因文档类型而异，最简单的组织形式是分段，所有格式均可用。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\chapter</span><span class="token punctuation">&#123;</span><span class="token headline class-name">First Chapter</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\section</span><span class="token punctuation">&#123;</span><span class="token headline class-name">Introduction</span><span class="token punctuation">&#125;</span>
+
+This is the first section.
+
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing
+elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante.
+Donec ullamcorper, felis non sodales...
+
+<span class="token function selector">\section</span><span class="token punctuation">&#123;</span><span class="token headline class-name">Second Section</span><span class="token punctuation">&#125;</span>
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra
+sollicitudin.  Praesent imperdiet mi necante...
+
+<span class="token function selector">\subsection</span><span class="token punctuation">&#123;</span><span class="token headline class-name">First Subsection</span><span class="token punctuation">&#125;</span>
+Praesent imperdietmi nec ante. Donec ullamcorper, felis non sodales...
+
+<span class="token function selector">\section*</span><span class="token punctuation">&#123;</span><span class="token headline class-name">Unnumbered Section</span><span class="token punctuation">&#125;</span>
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Etiam lobortis facilisissem</code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/7/7c/Sections1.PNG" alt="Sections1.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30e7b13712fef4e9df182/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%209&compiler=pdflatex">Open an example in Overleaf</a></p>
+<p>命令 <code>\section&#123;&#125;</code> 标记新节的开始，在大括号内设置标题。<br>段编号是自动生成的，可以通过在段命令中包含 * 作为 <code>\section*&#123;&#125;</code>来禁用。 我们也可以有多个<code>\subsection&#123;&#125;</code>，也可以有多个<code>\subsubsection&#123;&#125;</code>。下面列出了基本的深度级别：</p>
+<table>
+<thead>
+<tr>
+<th>-1</th>
+<th>\part{part}</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>\chapter{chapter}</td>
+</tr>
+<tr>
+<td>1</td>
+<td>\section{section}</td>
+</tr>
+<tr>
+<td>2</td>
+<td>\subsection{subsection}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>\subsubsection{subsubsection}</td>
+</tr>
+<tr>
+<td>4</td>
+<td>\paragraph{paragraph}</td>
+</tr>
+<tr>
+<td>5</td>
+<td>\subparagraph{subparagraph}</td>
+</tr>
+</tbody></table>
+<p>请注意，<code>\part</code> 和 <code>\chapter</code> 仅在 <code>report</code>（报告）和 <code>book</code>（书籍）文档类中可用。</p>
+<p>有关文档结构的更完整讨论，请参见<a target="_blank" rel="noopener" href="https://cn.overleaf.com/learn/Sections_and_chapters">有关节和章的文章</a>。</p>
+<h2 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h2><h3 id="在-LaTeX-中创建一个简单的表"><a href="#在-LaTeX-中创建一个简单的表" class="headerlink" title="在 LaTeX 中创建一个简单的表"></a>在 LaTeX 中创建一个简单的表</h3><p>下面，您可以看到一个表格最简单的工作示例</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">center</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span> c c c <span class="token punctuation">&#125;</span>
+ cell1 <span class="token punctuation">&amp;</span> cell2 <span class="token punctuation">&amp;</span> cell3 <span class="token function selector">\\</span>
+ cell4 <span class="token punctuation">&amp;</span> cell5 <span class="token punctuation">&amp;</span> cell6 <span class="token function selector">\\</span>
+ cell7 <span class="token punctuation">&amp;</span> cell8 <span class="token punctuation">&amp;</span> cell9
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">center</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/c/c2/TablesEx1.png" alt="TablesEx1.png" loading="lazy"></p>
+<p><code>tabular</code>（表格）环境是 LaTeX 创建表格的默认方法。您必须为此环境指定一个参数，在这种情况下为 <code>&#123;c c c&#125;</code>。<br>这告诉 LaTeX 这里将有三列，并且每列中的文本必须居中。您也可以使用 <code>r</code> 将文本向右对齐，使用 <code>l</code> 进行左对齐。<br>对齐符号 <code>＆</code> 用于指定表格条目中的分隔符。每行中的对齐符号必须始终少于列数。<br>要转到表格的下一行，我们使用<em>换行</em>命令 <code>\\</code>。我们将整个表格包装在 <code>center</code>（中心）环境中，以便它出现在页面的中心。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%2010&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h3 id="添加边框"><a href="#添加边框" class="headerlink" title="添加边框"></a>添加边框</h3><p><code>tabular</code> 环境更加灵活，您可以在每列之间放置分隔线。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">center</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span> |c|c|c| <span class="token punctuation">&#125;</span>
+ <span class="token function selector">\hline</span>
+ cell1 <span class="token punctuation">&amp;</span> cell2 <span class="token punctuation">&amp;</span> cell3 <span class="token function selector">\\</span>
+ cell4 <span class="token punctuation">&amp;</span> cell5 <span class="token punctuation">&amp;</span> cell6 <span class="token function selector">\\</span>
+ cell7 <span class="token punctuation">&amp;</span> cell8 <span class="token punctuation">&amp;</span> cell9 <span class="token function selector">\\</span>
+ <span class="token function selector">\hline</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">center</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/25/TablesEx2.png" alt="TablesEx2.png" loading="lazy"></p>
+<p>您可以使用水平线命令 <code>\hline</code> 和垂直线参数 <code>|</code> 添加边框。</p>
+<ul>
+<li><code>&#123; |c|c|c| &#125;</code>：这声明了被垂直线分割的三列，并将被应用在表格中。<code>|</code> 符号指定这些列应由一条垂直线分隔。</li>
+<li><code>\hline</code>：这将插入一条水平线。在这里，我们在表格的顶部和底部包括了水平线。你使用 <code>\hline</code> 的次数没有限制。</li>
+</ul>
+<p>在下面您可以看到第二个示例。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">center</span><span class="token punctuation">&#125;</span>
+ <span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>||c c c c||<span class="token punctuation">&#125;</span>
+ <span class="token function selector">\hline</span>
+ Col1 <span class="token punctuation">&amp;</span> Col2 <span class="token punctuation">&amp;</span> Col2 <span class="token punctuation">&amp;</span> Col3 <span class="token function selector">\\</span> <span class="token punctuation">[</span>0.5ex<span class="token punctuation">]</span>
+ <span class="token function selector">\hline</span><span class="token function selector">\hline</span>
+ 1 <span class="token punctuation">&amp;</span> 6 <span class="token punctuation">&amp;</span> 87837 <span class="token punctuation">&amp;</span> 787 <span class="token function selector">\\</span>
+ <span class="token function selector">\hline</span>
+ 2 <span class="token punctuation">&amp;</span> 7 <span class="token punctuation">&amp;</span> 78 <span class="token punctuation">&amp;</span> 5415 <span class="token function selector">\\</span>
+ <span class="token function selector">\hline</span>
+ 3 <span class="token punctuation">&amp;</span> 545 <span class="token punctuation">&amp;</span> 778 <span class="token punctuation">&amp;</span> 7507 <span class="token function selector">\\</span>
+ <span class="token function selector">\hline</span>
+ 4 <span class="token punctuation">&amp;</span> 545 <span class="token punctuation">&amp;</span> 18744 <span class="token punctuation">&amp;</span> 7560 <span class="token function selector">\\</span>
+ <span class="token function selector">\hline</span>
+ 5 <span class="token punctuation">&amp;</span> 88 <span class="token punctuation">&amp;</span> 788 <span class="token punctuation">&amp;</span> 6344 <span class="token function selector">\\</span> <span class="token punctuation">[</span>1ex<span class="token punctuation">]</span>
+ <span class="token function selector">\hline</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">center</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/2c/TablesEx3.png" alt="TablesEx3.png" loading="lazy"></p>
+<p>有时在 LaTeX 中创建表格可能会有些棘手，因此您可能想使用 <a target="_blank" rel="noopener" href="https://www.tablesgenerator.com/">TablesGenerator.com</a> 在线工具导出表格的 [LaTeX] 代码。<code>File &gt; Paste table data</code>（文件 &gt; 粘贴表格数据）选项使您可以从电子表格应用程序复制和粘贴数据。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%2010&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h3 id="表格说明（标题），标签和参考"><a href="#表格说明（标题），标签和参考" class="headerlink" title="表格说明（标题），标签和参考"></a>表格说明（标题），标签和参考</h3><p>您可以使用与图像几乎相同的方式添加标题和引用表格。唯一的区别是，使用 <code>table</code>（表）环境代替了 <code>figure</code>（图）环境。</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex">Table <span class="token function selector">\ref</span><span class="token punctuation">&#123;</span><span class="token keyword">table:data</span><span class="token punctuation">&#125;</span> is an example of referenced <span class="token function selector">\LaTeX</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> elements.
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">table</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>h!<span class="token punctuation">]</span>
+<span class="token function selector">\centering</span>
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>||c c c c||<span class="token punctuation">&#125;</span>
+ <span class="token function selector">\hline</span>
+ Col1 <span class="token punctuation">&amp;</span> Col2 <span class="token punctuation">&amp;</span> Col2 <span class="token punctuation">&amp;</span> Col3 <span class="token function selector">\\</span> <span class="token punctuation">[</span>0.5ex<span class="token punctuation">]</span>
+ <span class="token function selector">\hline</span><span class="token function selector">\hline</span>
+ 1 <span class="token punctuation">&amp;</span> 6 <span class="token punctuation">&amp;</span> 87837 <span class="token punctuation">&amp;</span> 787 <span class="token function selector">\\</span>
+ 2 <span class="token punctuation">&amp;</span> 7 <span class="token punctuation">&amp;</span> 78 <span class="token punctuation">&amp;</span> 5415 <span class="token function selector">\\</span>
+ 3 <span class="token punctuation">&amp;</span> 545 <span class="token punctuation">&amp;</span> 778 <span class="token punctuation">&amp;</span> 7507 <span class="token function selector">\\</span>
+ 4 <span class="token punctuation">&amp;</span> 545 <span class="token punctuation">&amp;</span> 18744 <span class="token punctuation">&amp;</span> 7560 <span class="token function selector">\\</span>
+ 5 <span class="token punctuation">&amp;</span> 88 <span class="token punctuation">&amp;</span> 788 <span class="token punctuation">&amp;</span> 6344 <span class="token function selector">\\</span> <span class="token punctuation">[</span>1ex<span class="token punctuation">]</span>
+ <span class="token function selector">\hline</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\caption</span><span class="token punctuation">&#123;</span>Table to test captions and labels<span class="token punctuation">&#125;</span>
+<span class="token function selector">\label</span><span class="token punctuation">&#123;</span><span class="token keyword">table:data</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">table</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/2/26/Ourtablelabel.PNG" alt="Ourtablelabel.PNG" loading="lazy"></p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%2010&compiler=pdflatex">Open an example in Overleaf</a></p>
+<blockquote>
+<p>注意：如果您在自己的计算机上使用标题说明和参考，则必须编译两次文档才能使参考正常工作。Overleaf 会自动为您完成此操作。</p>
+</blockquote>
+<h3 id="添加目录"><a href="#添加目录" class="headerlink" title="添加目录"></a>添加目录</h3><p>创建目录很简单，命令 <code>\tableofcontents</code> 为您完成所有的工作：</p>
+<pre class="language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">[</span>utf8<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token keyword">inputenc</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\title</span><span class="token punctuation">&#123;</span>Sections and Chapters<span class="token punctuation">&#125;</span>
+<span class="token function selector">\author</span><span class="token punctuation">&#123;</span>Gubert Farnsworth<span class="token punctuation">&#125;</span>
+<span class="token function selector">\date</span><span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+
+<span class="token function selector">\maketitle</span>
+
+<span class="token function selector">\tableofcontents</span>
+
+<span class="token function selector">\section</span><span class="token punctuation">&#123;</span><span class="token headline class-name">Introduction</span><span class="token punctuation">&#125;</span>
+
+This is the first section.
+
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing
+elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante.
+Donec ullamcorper, felis non sodales...
+
+<span class="token function selector">\addcontentsline</span><span class="token punctuation">&#123;</span>toc<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>section<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>Unnumbered Section<span class="token punctuation">&#125;</span>
+<span class="token function selector">\section*</span><span class="token punctuation">&#123;</span><span class="token headline class-name">Unnumbered Section</span><span class="token punctuation">&#125;</span>
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra
+sollicitudin.  Praesent imperdiet mi necante...
+
+<span class="token function selector">\section</span><span class="token punctuation">&#123;</span><span class="token headline class-name">Second Section</span><span class="token punctuation">&#125;</span>
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra
+sollicitudin.  Praesent imperdiet mi necante...
+
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/6/6d/TableOfContentsEx1.png" alt="TableOfContentsEx1.png" loading="lazy"></p>
+<p>节，小节和章将自动被包含在目录中。要手动添加条目（例如，当您想要一个未编号的部分时），请使用示例中的命令 <code>\addcontentsline</code>。</p>
+<p><a target="_blank" rel="noopener" href="https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3103d13712fef4e9df25b/download/zip&templateName=Learn%20LaTeX%20in%2020%20minutes:%20Part%2011&compiler=pdflatex">Open an example in Overleaf</a></p>
+<h2 id="下载你完成的文件"><a href="#下载你完成的文件" class="headerlink" title="下载你完成的文件"></a>下载你完成的文件</h2><p>您可以通过从上方的左侧菜单中点击 PDF 下载你完成的 PDF。<br>还有一个更快的选择就是单击 PDF 查看器上的 <code>Download PDF</code>（下载 PDF）按钮，如下所示。</p>
+<p><img src="https://sharelatex-wiki-cdn-671420.c.cdn77.org/learn-scripts/images/6/6c/Downloadpdf.PNG" alt="Downloadpdf.PNG" loading="lazy"></p>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">我很可爱，请给我钱</div><div id="qr" style="display:none;"><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://cdn.yunyoujun.cn/img/donate/alipay-qrcode.jpg"><img loading="lazy" src="https://cdn.yunyoujun.cn/img/donate/alipay-qrcode.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><span class="icon iconify" data-icon="ri:alipay-line"></span></span></div></div><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://cdn.yunyoujun.cn/img/donate/qqpay-qrcode.png"><img loading="lazy" src="https://cdn.yunyoujun.cn/img/donate/qqpay-qrcode.png" alt="QQ 支付" title="QQ 支付"></a><div><span style="color:#12B7F5"><span class="icon iconify" data-icon="ri:qq-line"></span></span></div></div><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://cdn.yunyoujun.cn/img/donate/wechatpay-qrcode.jpg"><img loading="lazy" src="https://cdn.yunyoujun.cn/img/donate/wechatpay-qrcode.jpg" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><span class="icon iconify" data-icon="ri:wechat-pay-line"></span></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>云游君</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://www.yunyoujun.cn/share/trans-learn-latex-in-30-minutes/" title="【译】30 分钟学会 LaTeX">https://www.yunyoujun.cn/share/trans-learn-latex-in-30-minutes/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/share/how-much-3d-format/" rel="prev" title="【转】三维文件格式知多少"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">【转】三维文件格式知多少</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/note/latex-use-note/" rel="next" title="LaTeX 使用笔记"><span class="post-nav-text">LaTeX 使用笔记</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>如果您有任何关于博客内容的相关讨论，欢迎前往 <a href="https://github.com/YunYouJun/yunyoujun.github.io/discussions" target="_blank">GitHub Discussions</a> 与我交流。</span><br></div><div id="waline"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"><script>window.CONFIG.waline.config.path = "/share/trans-learn-latex-in-30-minutes/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank">苏ICP备17038157号</a></div><div class="copyright"><span>&copy; 2016 – 2022 </span><a class="with-love" id="animate" target="_blank" rel="noopener" href="https://sponsors.yunyoujun.cn" title="云游君的赞助者们"><span class="icon iconify" data-icon="ri:cloud-line"></span></a><span class="author"> 云游君</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.4</span></div><div class="footer-support"><span>本网站由</span><a class="footer-support-logo" href="https://www.upyun.com" target="blank" title="又拍云"><img height="30" src="https://cdn.yunyoujun.cn/img/logo/upyun-logo.png" alt="又拍云"></a><span>提供 CDN 加速</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:search-line"></span></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script defer src="https://fastly.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script defer src="https://fastly.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script defer src="/js/search/algolia-search.js" type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><span class="icon iconify" data-icon="ri:close-line"></span></span></div><div class="search-input-container"></div><div class="algolia-results"><div id="algolia-stats"></div><div id="algolia-hits"></div><div class="algolia-pagination" id="algolia-pagination"></div></div></div><!-- hexo injector body_end start --><script src="/js/hexo-tag-common.js"></script><!-- hexo injector body_end end --></body></html>
