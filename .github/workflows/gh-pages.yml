@@ -1,13 +1,7 @@
 name: GitHub Pages
 
-on:
-  push:
-    branches:
-      - hexo
 
-  pull_request:
-    branches:
-      - hexo
+on: workflow_dispatch
 
 jobs:
   deploy:
